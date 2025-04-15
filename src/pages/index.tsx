@@ -28,6 +28,8 @@ export default function IndexPage() {
     mutate(data.username);
   };
 
+  console.log(import.meta.env.VITE_API_URL, "assadassa");
+
   return (
     <DefaultLayout>
       <Form

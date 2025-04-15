@@ -2,9 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 export const api = axios.create({
-  baseURL:
-    import.meta.env.VITE_API_URL ||
-    "https://meme-back-end-production.up.railway.app",
+  baseURL: import.meta.env.VITE_API_URL || "localhost:3000/api",
   withCredentials: true,
 });
 
