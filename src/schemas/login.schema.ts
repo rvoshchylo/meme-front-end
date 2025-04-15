@@ -5,5 +5,8 @@ export const loginSchema = z.object({
     .string()
     .min(3, "Too short")
     .max(32, "Too long")
-    .regex(/^[A-Za-z0-9]+$/, "Only letters are allowed, no spaces or symbols"),
+    .regex(
+      /^[A-Za-z0-9]+$/,
+      "Only letters and numbers are allowed, no spaces or symbols",
+    ),
 });
