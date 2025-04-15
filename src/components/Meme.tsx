@@ -9,9 +9,10 @@ import { useToggleLike } from "@/api/like/like.queries";
 
 interface MemeInterface {
   meme: Meme;
+  chooseImage: (imageUrl: string) => void;
 }
 
-const MemeCard: React.FC<MemeInterface> = ({ meme }) => {
+const MemeCard: React.FC<MemeInterface> = ({ meme, chooseImage }) => {
   const { mutate, isPending } = useToggleLike(meme.id);
 
   const toggleLike = () => {
@@ -21,7 +22,19 @@ const MemeCard: React.FC<MemeInterface> = ({ meme }) => {
   return (
     <Card className="w-full shadow-md p-2">
       <CardHeader className="p-0">
-        <div className="flex justify-center w-full h-[200px] overflow-hidden">
+        <div
+          className="flex justify-center w-full h-[200px] overflow-hidden"
+          role="button"
+          tabIndex={0}
+          onClick={() => {
+            chooseImage(meme.image);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              chooseImage(meme.image);
+            }
+          }}
+        >
           <Image
             alt={meme.name}
             className="object-contain h-full"
