@@ -1,4 +1,10 @@
-import { Modal, ModalContent, ModalBody, ModalFooter } from "@heroui/modal";
+import {
+  Modal,
+  ModalContent,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+} from "@heroui/modal";
 import { Button } from "@heroui/button";
 import { Image } from "@heroui/image";
 
@@ -22,6 +28,9 @@ export const ImageModal = ({ isOpen, onClose, imageUrl }: Props) => {
       <ModalContent>
         {(close) => (
           <>
+            <ModalHeader className="flex items-center justify-center">
+              <span>Full Image</span>
+            </ModalHeader>
             <ModalBody className="flex justify-center items-center overflow-auto p-4">
               <Image
                 alt="Full meme"
