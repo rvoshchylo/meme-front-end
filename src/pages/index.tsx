@@ -28,8 +28,6 @@ export default function IndexPage() {
     mutate(data.username);
   };
 
-  console.log(import.meta.env.VITE_API_URL, "assadassa");
-
   return (
     <DefaultLayout>
       <Form
@@ -47,6 +45,7 @@ export default function IndexPage() {
             label="Username"
             placeholder="Enter your username"
             {...register("username")}
+            isInvalid={!!errors.username}
           />
           {errors.username && (
             <span className="absolute text-red-500 text-sm bottom-[-2] left-1">
