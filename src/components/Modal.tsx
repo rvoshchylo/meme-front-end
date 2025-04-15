@@ -50,7 +50,14 @@ export const EditMemeModal = ({ isOpen, onClose, meme }: Props) => {
   };
 
   return (
-    <Modal isOpen={isOpen} size="md" onClose={onClose}>
+    <Modal
+      classNames={{
+        wrapper: "items-center justify-center",
+      }}
+      isOpen={isOpen}
+      size="md"
+      onClose={onClose}
+    >
       <ModalContent>
         {(close) => (
           <>
