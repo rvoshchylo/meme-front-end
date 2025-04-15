@@ -13,14 +13,15 @@ import { loginSchema } from "@/schemas/login.schema";
 type FormData = z.infer<typeof loginSchema>;
 
 export default function IndexPage() {
-  const { mutate } = useLogin();
+  const { mutate, isPending } = useLogin();
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(loginSchema),
+    mode: "onChange",
   });
 
   const onSubmit = (data: FormData) => {
@@ -52,7 +53,7 @@ export default function IndexPage() {
           )}
         </div>
 
-        <Button className="w-full" isLoading={isSubmitting} type="submit">
+        <Button className="w-full" isLoading={isPending} type="submit">
           Login
         </Button>
       </Form>
