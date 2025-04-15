@@ -1,4 +1,4 @@
-# Meme Directory – Frontend [LINK](https://meme-front-end-production.up.railway.app/)
+# Meme Directory – Frontend
 
 A responsive and interactive meme directory built with **React**, **Vite**, **TypeScript**, **HeroUI**, and **TanStack Query**.
 
