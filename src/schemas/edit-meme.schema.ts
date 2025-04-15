@@ -5,7 +5,7 @@ export const editMemeSchema = z.object({
     .string()
     .min(3, "Name is too short")
     .max(100, "Name is too long")
-    .regex(/^[A-Za-z]+$/, "Name must contain only letters without spaces"),
+    .regex(/^[A-Za-z\s]+$/, "Name must contain only letters and spaces"),
 
   image: z
     .string()
