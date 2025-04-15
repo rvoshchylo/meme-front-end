@@ -16,6 +16,7 @@ import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 
 export const Navbar = () => {
+  const currentPath = window.location.pathname;
   const navigate = useNavigate();
   const token = Cookies.get("accessToken");
   const isLoggedIn = !!token;
@@ -48,9 +49,9 @@ export const Navbar = () => {
               <Link
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  currentPath === item.href && "text-purple-500 font-medium",
                 )}
-                color="foreground"
+                data-active={currentPath === item.href}
                 href={item.href}
               >
                 {item.label}
