@@ -10,9 +10,12 @@ export const editMemeSchema = z.object({
   image: z
     .string()
     .url("Invalid image URL")
-    .refine((val) => /\.jpg$/i.test(val.split("?")[0]), {
-      message: "Image must end with .jpg",
-    }),
+    .refine(
+      (val) => val.startsWith("https://") && /\.jpg$/i.test(val.split("?")[0]),
+      {
+        message: "URL must start with https:// and end with .jpg",
+      },
+    ),
 
   likes: z.coerce.number().min(0).max(99),
   id: z.string(),
