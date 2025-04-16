@@ -10,6 +10,7 @@ import {
 import { Button } from "@heroui/button";
 import { useDisclosure } from "@heroui/modal";
 import { useState } from "react";
+import { Link } from "@heroui/link";
 
 import { useGetMemes } from "@/api/memes/memes.queries";
 import DefaultLayout from "@/layouts/default";
@@ -17,6 +18,7 @@ import { title } from "@/components/primitives";
 import { Column, columns } from "@/config/columns";
 import { Meme } from "@/types/meme";
 import { EditMemeModal } from "@/components/Modal";
+import TableSkeleton from "@/components/TableSkeleton";
 
 export default function TablePage() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -36,7 +38,7 @@ export default function TablePage() {
         </div>
 
         {isLoading ? (
-          <p>Loading...</p>
+          <TableSkeleton />
         ) : (
           <Table aria-label="Meme table">
             <TableHeader columns={columns}>
@@ -62,6 +64,14 @@ export default function TablePage() {
                         </Button>
                       ) : columnKey === "id" ? (
                         item.id.slice(0, 6) + "..."
+                      ) : columnKey === "image" ? (
+                        <Link
+                          isExternal
+                          className="relative inline-block hover:text-blue-500 transition-colors duration-300 after:absolute after:left-0 after:-bottom-0.5 after:h-[2px] after:w-0 hover:after:w-full after:bg-current after:transition-all after:duration-300"
+                          href={item.image}
+                        >
+                          {item.image}
+                        </Link>
                       ) : (
                         getKeyValue(item, columnKey)
                       )}

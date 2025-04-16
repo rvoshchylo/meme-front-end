@@ -6,7 +6,6 @@ import { Button } from "@heroui/button";
 
 import { Meme } from "@/types/meme";
 import { useToggleLike } from "@/api/like/like.queries";
-
 interface MemeInterface {
   meme: Meme;
   chooseImage: (imageUrl: string) => void;
@@ -20,7 +19,7 @@ const MemeCard: React.FC<MemeInterface> = ({ meme, chooseImage }) => {
   };
 
   return (
-    <Card className="w-full shadow-md p-2">
+    <Card className="w-full shadow-md p-2 min-h-[350px] flex flex-col justify-between">
       <CardHeader className="p-0">
         <div
           className="flex justify-center w-full h-[200px] overflow-hidden"
